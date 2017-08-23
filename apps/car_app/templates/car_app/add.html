@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<br><br>
+		<header>
+			<div style="float: right;">
+				<a href="/cars">Home</a> |
+				<a href="/logout">Logout</a>
+			</div>
+		</header>
+		<br>
+
+		{%if messages%}
+			{%for message in messages%}
+				{%if message.tags == 'error'%}
+					<p style="color: red">{{message}}</p>
+				{%endif%}
+			{%endfor%}
+		{%endif%}
+
+		<h1>Add a Car:</h1>
+		<form action="/cars/submit_car" method="post">
+			{%csrf_token%}
+			<input type="text" name="make" placeholder="Enter make of car">
+			<br><br>
+
+			<input type="text" name="model" placeholder="Enter model of car">
+			<br><br>
+
+			<input type="number" name="year" placeholder="Enter year of car">
+			<br><br>
+
+			<input type="submit" value="Add Car!">
+		</form>
+	</body>
+</html>

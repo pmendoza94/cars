@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Login | Registration</title>
+	</head>
+	<body>
+		<br><br>
+
+		{%if messages%}
+			{%for message in messages%}
+				{%if message.tags == 'error'%}
+					<p style="color: red">{{message}}</p>
+				{%endif%}
+				{%if message.tags == 'success'%}
+					<p style="color: green">{{message}}</p>
+				{%endif%}
+			{%endfor%}
+		{%endif%}
+
+		<h1>Registration:</h1>
+		<form action="/register" method="post">
+			{%csrf_token%}
+			<input type="text" name="first_name" placeholder="Enter your first name">
+			<br><br>
+
+			<input type="text" name="last_name" placeholder="Enter your last name">
+			<br><br>
+
+			<input type="text" name="email" placeholder="Enter your email">
+			<br><br>
+
+			<input type="password" name="password" placeholder="Enter password">
+			<br><br>
+
+			<input type="password" name="con_password" placeholder="Confirm password">
+			<br><br>
+
+			<input type="date" name="birthdate" placeholder="Enter your birthdate">
+			<br><br>
+
+			<input type="submit" value="Register!">
+		</form>
+		<br><br>
+
+		<h1>Login:</h1>
+		<form action="/login" method="post">
+			{%csrf_token%}
+			<input type="text" name="email" placeholder="Enter your email">
+			<br><br>
+
+			<input type="password" name="password" placeholder="Enter your password">
+			<br><br>
+
+			<input type="submit" value="Login!">
+		</form>
+	</body>
+</html>

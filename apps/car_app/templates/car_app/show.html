@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Cars | Show</title>
+		<style>
+			table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 75%;
+			}
+
+			td, th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+			}
+
+			tr:nth-child(even) {
+			background-color: #dddddd;
+			}
+		</style>
+	</head>
+	<body>
+		<br><br>
+		<header>
+			<div style="float: right;">
+				<a href="/cars">Home</a> |
+				<a href="/logout">Logout</a>
+			</div>
+		</header>
+		<br>
+
+		<h1>Owner's Car List:</h1>
+		<br>
+
+		<h2>Name:  {{user.first_name}}</h2>
+		<br><br>
+		<table>
+			<tr>
+				<td><b>Make</b></td>
+				<td><b>Model</b></td>
+				<td><b>Year</b></td>
+			</tr>
+			{%for car in user.cars_owned.all%}
+			<tr>
+			<td>{{car.make}}</td>
+
+			<td>{{car.model}}</td>
+
+			<td>{{car.year}}</td>
+			</tr>
+			{%endfor%}
+		</table>
+	</body>
+</html>
